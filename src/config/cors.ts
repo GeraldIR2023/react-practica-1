@@ -8,7 +8,6 @@ export const corsConfig: CorsOptions = {
         if (process.argv[2] === "--api") {
             whiteList.push(undefined);
         }
-
         if (whiteList.includes(origin)) {
             callback(null, true);
         } else {
