@@ -1,5 +1,6 @@
 import slug from "slug";
 import User from "../models/User";
+import { generateJWT } from "../utils/jwt";
 import { Request, Response } from "express";
 import { checkPassword, hashPassword } from "../utils/auth";
 
@@ -48,5 +49,6 @@ export const login = async (req: Request, res: Response) => {
         return;
     }
 
+    generateJWT(user); //*Generamos el token
     res.status(200).send("Usuario logueado");
 };
