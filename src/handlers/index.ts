@@ -49,6 +49,7 @@ export const login = async (req: Request, res: Response) => {
         return;
     }
 
-    generateJWT(user); //*Generamos el token
-    res.status(200).send("Usuario logueado");
+    const token = generateJWT({ id: user._id }); //*Generamos el token
+
+    res.status(200).send(token);
 };
