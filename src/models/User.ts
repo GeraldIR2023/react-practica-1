@@ -6,6 +6,7 @@ export interface IUser {
     name: string;
     email: string;
     password: string;
+    description: string;
 } //*La definición de la interfaz de usuario
 
 const UserSchema = new Schema({
@@ -32,6 +33,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    description: {
+        type: String,
+        default: "",
     },
 }); //*La definición del modelo de usuario
 
