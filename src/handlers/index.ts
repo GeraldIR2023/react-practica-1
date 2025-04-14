@@ -1,5 +1,7 @@
 import slug from "slug";
 import User from "../models/User";
+import formidable from "formidable";
+import cloudinary from "../config/cloudinary";
 import { generateJWT } from "../utils/jwt";
 import { Request, Response } from "express";
 import { checkPassword, hashPassword } from "../utils/auth";
@@ -77,6 +79,20 @@ export const updateProfile = async (req: Request, res: Response) => {
         res.send("Perfil actualizado correctamente"); //*Retornamos el usuario actualizado
     } catch (e) {
         const error = new Error("Hubo un error al actualizar el perfil");
+        res.status(500).json({ error: error.message });
+    }
+};
+
+export const uploadImage = async (req: Request, res: Response) => {
+    const form = formidable({ multiples: true }); //^Creamos el formulario para subir la imagen
+    form.parse(req, (err, fields, files) => {
+        console.log(files);
+    });
+
+    try {
+        console.log("Subiendo imagen...");
+    } catch (e) {
+        const error = new Error("Hubo un error al subir la imagen");
         res.status(500).json({ error: error.message });
     }
 };
