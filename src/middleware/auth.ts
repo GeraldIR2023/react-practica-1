@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from "express";
 declare global {
     namespace Express {
         interface Request {
-            user?: IUser; //^Agregamos la propiedad user al request
+            user?: IUser;
         }
     }
 } //^Agregamos la propiedad user al request

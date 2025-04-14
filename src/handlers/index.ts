@@ -57,3 +57,12 @@ export const login = async (req: Request, res: Response) => {
 export const getUser = async (req: Request, res: Response) => {
     res.status(200).json(req.user); //*Retornamos el usuario
 };
+
+export const updateProfile = async (req: Request, res: Response) => {
+    try {
+        console.log(req.body);
+    } catch (e) {
+        const error = new Error("Hubo un error al actualizar el perfil");
+        res.status(500).json({ error: error.message });
+    }
+};
