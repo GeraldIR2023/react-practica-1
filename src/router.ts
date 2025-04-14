@@ -27,7 +27,9 @@ router.post(
     login
 );
 
-router.get(
+router.get("/user", authenticate, getUser);
+
+router.patch(
     "/user",
     body("handle").notEmpty().withMessage("El Handle no puede ir vacio"),
     body("description")
@@ -35,8 +37,7 @@ router.get(
         .withMessage("La descripción no puede ir vacia"),
     handleinputErrors,
     authenticate,
-    getUser
+    updateProfile
 );
-router.patch("/user", authenticate, updateProfile);
 
 export default router;
