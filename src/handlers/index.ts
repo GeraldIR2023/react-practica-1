@@ -102,7 +102,9 @@ export const uploadImage = async (req: Request, res: Response) => {
                         return;
                     }
                     if (result) {
-                        console.log(result.secure_url);
+                        req.user.image = result.secure_url; //*Guardamos la imagen en el usuario
+                        await req.user.save();
+                        res.json({ image: result.secure_url });
                     }
                 }
             );
