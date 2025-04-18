@@ -8,6 +8,7 @@ export interface IUser extends Document {
     password: string;
     description: string;
     image: string;
+    links: string;
 } //*La definición de la interfaz de usuario
 
 const UserSchema = new Schema({
@@ -42,6 +43,10 @@ const UserSchema = new Schema({
     image: {
         type: String,
         default: "",
+    },
+    links: {
+        type: String,
+        default: "[]",
     },
 }); //*La definición del modelo de usuario
 
