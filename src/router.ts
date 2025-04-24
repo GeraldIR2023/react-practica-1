@@ -5,6 +5,7 @@ import { handleinputErrors } from "./middleware/validation";
 import {
     createAccount,
     getUser,
+    getUserByHandle,
     login,
     updateProfile,
     uploadImage,
@@ -47,5 +48,7 @@ router.patch(
 );
 
 router.post("/user/image", authenticate, uploadImage);
+
+router.get("/:handle", getUserByHandle); //*Indica que la ruta es dinámica y que el handle es un parámetro
 
 export default router;

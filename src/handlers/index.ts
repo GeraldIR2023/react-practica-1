@@ -115,3 +115,14 @@ export const uploadImage = async (req: Request, res: Response) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const getUserByHandle = async (req: Request, res: Response) => {
+    try {
+        const { handle } = req.params; //^Obtenemos el handle de la url
+
+        console.log(handle);
+    } catch (e) {
+        const error = new Error("Hubo un error");
+        res.status(500).json({ error: error.message });
+    }
+};
