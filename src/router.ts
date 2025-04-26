@@ -7,6 +7,7 @@ import {
     getUser,
     getUserByHandle,
     login,
+    searchByHandle,
     updateProfile,
     uploadImage,
 } from "./handlers";
@@ -39,9 +40,6 @@ router.get("/user", authenticate, getUser);
 router.patch(
     "/user",
     body("handle").notEmpty().withMessage("El Handle no puede ir vacio"),
-    body("description")
-        .notEmpty()
-        .withMessage("La descripción no puede ir vacia"),
     handleinputErrors,
     authenticate,
     updateProfile
@@ -50,5 +48,12 @@ router.patch(
 router.post("/user/image", authenticate, uploadImage);
 
 router.get("/:handle", getUserByHandle); //*Indica que la ruta es dinámica y que el handle es un parámetro
+
+router.post(
+    "/search",
+    body("handle").notEmpty().withMessage("El handle no puede ir vacio"),
+    handleinputErrors,
+    searchByHandle
+);
 
 export default router;
